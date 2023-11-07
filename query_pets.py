@@ -7,7 +7,6 @@ def query_data(db_path):
     cursor = conn.cursor()
 
     while True:
-        # Ask the user for a person's ID number
         person_id = input("Please enter a person's ID number or '-1' to exit: ")
         if person_id == '-1':
             break
@@ -18,7 +17,6 @@ def query_data(db_path):
             print("ID must be a number.")
             continue
 
-        # Query the database for the person and their pets
         cursor.execute("SELECT * FROM person WHERE id = ?", (person_id,))
         person_data = cursor.fetchone()
 
@@ -42,7 +40,6 @@ def query_data(db_path):
         else:
             print("Person not found.")
 
-    # Close the connection to the database
     conn.close()
 
 if __name__ == "__main__":
